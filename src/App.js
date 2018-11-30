@@ -5,6 +5,7 @@ import TrainingList from './components/TrainingList';
 import About from './components/About';
 import Navigator from './components/Navigator';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Calender from './components/Calender';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
               <Route path="/About/" component={About} />
               <Route path="/CustomerList/" component={CustomerList} />
               <Route path="/TrainingList/" component={TrainingList} />
+              <Route path="/Calendar/" component={Calender} />
             </Switch>
           </div>
         </BrowserRouter>
