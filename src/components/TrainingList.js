@@ -4,11 +4,12 @@ import 'react-table/react-table.css';
 import Button from "@material-ui/core/Button";
 import Moment from "moment";
 import DeleteIcon from "@material-ui/icons/Delete";
-import Addtraining from "./Addtraining.js";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import Snackbar from "@material-ui/core/Snackbar";
-import SaveIcon from "@material-ui/icons/Save";
+import NewTraining from './NewTraining';
+
+
 
 
 class TrainingList extends Component {
@@ -32,7 +33,6 @@ class TrainingList extends Component {
                 })
             })
     }
-
     deleteTraining = link => {
         confirmAlert({
             title: "",
@@ -78,20 +78,6 @@ class TrainingList extends Component {
     render() {
         const columns = [
             {
-                Header: 'Add Customer',
-                id: "button",
-                sortable: false,
-                filterable: false,
-                width: 120,
-                accessor: "links[0].href",
-                Cell: ({ value }) => (
-                    <Button className="glyphicon glyphicon-plus" color="primary" size="medium"
-                        onClick={() => {
-                            this.selectCustomer(value)
-                        }}><SaveIcon /></Button>
-                )
-            },
-            {
                 Header: 'Date',
                 accessor: 'date',
                 Cell: ({ value }) => Moment(value).format("MMM Do YYYY")
@@ -122,8 +108,12 @@ class TrainingList extends Component {
         ]
         return (
             <div class="container">
+            <h1>Training List</h1>
+            <div className="row">
+                    <NewTraining saveTraining={this.saveTraining} listTrainings={this.listTrainings}></NewTraining>
+                </div>
 
-                <ReactTable className="-striped -highlight"
+                <ReactTable className="table table-sm table-dark"
                     data={this.state.trainings}
                     filterable={true}
                     defaultPageSize={10}

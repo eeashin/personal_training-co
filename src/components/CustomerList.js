@@ -9,7 +9,6 @@ import { CSVLink } from "react-csv";
 import Snackbar from "@material-ui/core/Snackbar";
 import Addcustomer from "./Addcustomer";
 import "react-confirm-alert/src/react-confirm-alert.css";
-import Icon from '@material-ui/core/Icon';
 import Addtraining from "./Addtraining"
 
 class CustomerList extends Component {
@@ -123,9 +122,10 @@ class CustomerList extends Component {
     render() {
         return (
             <div className="container">
+            <h1>Customer List</h1>
                 <div className="row">
                     <Addcustomer saveCustomer={this.saveCustomer} listCustomers={this.listCustomers} />
-                    <CSVLink style={{ padding: 20 }} data={this.state.customers}> Click to download </CSVLink>
+                    <CSVLink style={{ padding: 20 }} data={this.state.customers}>Downloan Customer List</CSVLink>
                 </div>
                 <ReactTable
                     data={this.state.customers}
@@ -184,7 +184,7 @@ class CustomerList extends Component {
                                     Cell: this.renderEditable
                                 },
                                 {
-                                    Header: "Edit",
+                                    Header: "Update",
                                     id: "button",
                                     sortable: false,
                                     filterable: false,
@@ -215,7 +215,7 @@ class CustomerList extends Component {
                         }
                     ]}
                     defaultPageSize={10}
-                    filterable className="-highlight">
+                    filterable className="-striped -highlight">
 
                 </ReactTable>
                 <Snackbar

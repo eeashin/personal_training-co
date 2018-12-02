@@ -5,7 +5,7 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 
-moment.locale('en-GB');
+
 const localizer = BigCalendar.momentLocalizer(moment);
 
 class Calender extends Component {
@@ -17,40 +17,45 @@ class Calender extends Component {
             cal_events: [
                 //State is updated via componentDidMount
             ],
-            customerTrainings:[]
+            customerTrainings: []
 
+        }
     }
-}
 
     convertDate = (date) => {
         return moment.utc(date).toDate();
     }
     componentDidMount() {
         this.getTrainings();
-      }
+    }
 
-    getTrainings=()=> {
+    getTrainings = () => {
         fetch('https://customerrest.herokuapp.com/gettrainings')
             .then(response => response.json())
             .then(responseData => {
-                this.setState({customerTrainings: responseData});
+                this.setState({ customerTrainings: responseData });
                 let appointments = [];
-                
+
                 for (let i = 0; i < this.state.customerTrainings.length; i++) {
-                    // appointments[i].start = this.convertDate(appointments[i].start)
-                    console.log(this.convertDate(this.state.customerTrainings[i].date));
-                    let schedule = {
-                        title: '',
-                        start: 0,
-                        end:0
+
+                    if (this.state.customerTrainings[i].customer !== null) {
+                        let schedule = {
+                            title: '',
+                            start: 0,
+                            end: 0
+
+                        }
+
+                        schedule.title = this.state.customerTrainings[i].customer.firstname
+                            + " " + this.state.customerTrainings[i].customer.lastname
+                            +" √ "+this.state.customerTrainings[i].activity;
+                        schedule.start = this.convertDate(this.state.customerTrainings[i].date);
+                        schedule.end = this.convertDate(this.state.customerTrainings[i].date
+                            + (this.state.customerTrainings[i].duration * 60000));
+                        appointments.push(schedule);
+
                     }
-                    schedule.start = this.convertDate(this.state.customerTrainings[i].date);
-                    schedule.end = this.convertDate(this.state.customerTrainings[i].date);
-                    schedule.title = this.state.customerTrainings[i].activity + " " + this.state.customerTrainings[i].customer.firstname + " " + this.state.customerTrainings[i].customer.lastname
-                    console.log(schedule);
-                    appointments.push(schedule);
                 }
-                console.log(appointments);
                 this.setState({
                     cal_events: appointments
                 })
@@ -76,7 +81,7 @@ class Calender extends Component {
                         localizer={localizer}
                         events={cal_events}
                         step={30}
-                        defaultView='week'
+                        defaultView='month'
                         views={['month', 'week', 'day']}
                         defaultDate={new Date()}
                     />
