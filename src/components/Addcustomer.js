@@ -51,36 +51,32 @@ class Addcustomer extends Component {
             marginLeft: '-35%'
         };
 
-        return (
-            <div>
-                <SkyLight dialogStyles={addDialog} hideOnOverlayClicked ref="simpleDialog">
-                    <div className="card" style={{ "width": "95%" }}>
-                        <div className="card-body">
-                            <h5 className="card-title">Enter New Customer Info</h5>
-
-                            <TextField placeholder="First Name" onChange={this.handleChange} name="firstname" /> <br />
-                            <TextField placeholder="Last Name" onChange={this.handleChange} name="lastname" /> <br />
-                            <TextField placeholder="Address" onChange={this.handleChange} name="streetaddress" /> <br />
-                            <TextField placeholder="Post Code" onChange={this.handleChange} name="postcode" /> <br />
-                            <TextField placeholder="City" onChange={this.handleChange} name="city" /> <br />
-                            <TextField placeholder="Email" onChange={this.handleChange} name="email" /> <br />
-                            <TextField placeholder="Phone" onChange={this.handleChange} name="phone" /> <br />
-
-                            <div className="col-md-2">
-                                <button style={{ 'margin': '10px' }} className="btn btn-primary"
-                                    onClick={this.handleSubmit}><SaveIcon /> Save New Customer</button>
-                            </div>
+        return <div>
+            <SkyLight dialogStyles={addDialog} hideOnOverlayClicked ref="simpleDialog">
+                <div className="card" style={{ width: "95%" }}>
+                    <div className="card-body">
+                        <h5 className="card-title">Enter New Customer Info</h5>
+                        <TextField placeholder="First Name" onChange={this.handleChange} name="firstname" /> <br />
+                        <TextField placeholder="Last Name" onChange={this.handleChange} name="lastname" /> <br />
+                        <TextField placeholder="Address" onChange={this.handleChange} name="streetaddress" /> <br />
+                        <TextField placeholder="Post Code" onChange={this.handleChange} name="postcode" /> <br />
+                        <TextField placeholder="City" onChange={this.handleChange} name="city" /> <br />
+                        <TextField placeholder="Email" onChange={this.handleChange} name="email" /> <br />
+                        <TextField placeholder="Phone" onChange={this.handleChange} name="phone" /> <br />
+                        <div className="col-md-2">
+                            <button style={{ margin: "10px" }} className="btn btn-primary" onClick={this.handleSubmit}>
+                                <SaveIcon /> Save New Customer
+                            </button>
                         </div>
                     </div>
-                </SkyLight>
-                <div className="col-md-2">
-                    <button style={{ 'margin': '10px' }} className="btn btn-primary"
-                        onClick={() => this.refs.simpleDialog.show()}>Add Customer</button>
                 </div>
+            </SkyLight>
+            <div className="col-md-2">
+                <button style={{ margin: "10px" }} className="btn btn-primary" onClick={() => this.refs.simpleDialog.show()}>
+                    Add Customer
+              </button>
             </div>
-
-
-        );
+        </div>;
     }
 }
 

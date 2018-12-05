@@ -1,28 +1,52 @@
-import React, { Component } from 'react';
-import './App.css';
-import CustomerList from './components/CustomerList';
-import TrainingList from './components/TrainingList';
-import About from './components/About';
-import Navigator from './components/Navigator';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import Calender from './components/Calender';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import PrivateRoute from "./PrivateRoute";
+import app from "./base";
+
+import Home from "./Home";
+import LogIn from "./LogIn";
 
 class App extends Component {
+  state = { loading: true, authenticated: false, user: null };
+
+  componentWillMount() {
+    app.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.setState({
+          authenticated: true,
+          currentUser: user,
+          loading: false
+        });
+      } else {
+        this.setState({
+          authenticated: false,
+          currentUser: null,
+          loading: false
+        });
+      }
+    });
+  }
+
   render() {
+    const { authenticated, loading } = this.state;
+
+    if (loading) {
+      return <p>Loading..</p>;
+    }
+
     return (
-      <div className="App">
-        <BrowserRouter>
-          <div>
-            <Navigator />
-            <Switch>
-              <Route path="/About/" component={About} />
-              <Route path="/CustomerList/" component={CustomerList} />
-              <Route path="/TrainingList/" component={TrainingList} />
-              <Route path="/Calendar/" component={Calender} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </div>
+      <Router>
+        <div>
+          <PrivateRoute
+            exact
+            path="/"
+            component={Home}
+            authenticated={authenticated}
+          />
+          <Route exact path="/login/" component={LogIn} />
+        </div>
+      </Router>
     );
   }
 }

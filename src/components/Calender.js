@@ -48,7 +48,7 @@ class Calender extends Component {
 
                         schedule.title = this.state.customerTrainings[i].customer.firstname
                             + " " + this.state.customerTrainings[i].customer.lastname
-                            +" √ "+this.state.customerTrainings[i].activity;
+                            + " √ " + this.state.customerTrainings[i].activity;
                         schedule.start = this.convertDate(this.state.customerTrainings[i].date);
                         schedule.end = this.convertDate(this.state.customerTrainings[i].date
                             + (this.state.customerTrainings[i].duration * 60000));
@@ -72,9 +72,9 @@ class Calender extends Component {
         const { cal_events } = this.state
 
         return (
-            <div>
+            <div className="container"><br />
 
-                <h1>Training Schedule</h1>
+                <h1 className="text-center font-weight-bold">Training Schedule</h1>
 
                 <div style={{ height: 700 }}>
                     <BigCalendar

@@ -10,9 +10,9 @@ class Navigator extends Component {
                         data-toggle="collapse" data-target="#navbarSupportedContent"
                         ariacontrols="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
-                        
+
                     </button>
-                    <Link className="navbar-brand" to="./About">Personal Training Company</Link>
+                    <Link className="navbar-brand" to="./About">Company Information</Link>
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
