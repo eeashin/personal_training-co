@@ -2,15 +2,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 ## Demo on Heroku Free version
 https://personal-training-co.herokuapp.com/
 
-To login user any of the following User Email & Passwords to enter on heroku demo app.
-User email: juha@teacher.fi
-Password: juha1234
-User email: eashin@trainer.fi
-Password: eashin1234
-User email: admin@trainer.fi
-Password: admin1234
-User email: user@trainer.fi
-Password: user1234
+To login user any of the following User Email & Passwords to enter on heroku demo app.<br>
+User email: juha@teacher.fi<br>
+Password: juha1234<br>
+User email: eashin@trainer.fi<br>
+Password: eashin1234<br>
+User email: admin@trainer.fi<br>
+Password: admin1234<br>
+User email: user@trainer.fi<br>
+Password: user1234<br>
 ## Available Scripts
 
 In the project directory, you can run:
