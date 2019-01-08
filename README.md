@@ -11,6 +11,12 @@ User email: admin@trainer.fi<br>
 Password: admin1234<br>
 User email: user@trainer.fi<br>
 Password: user1234<br>
+
+Note: please consider the fact of Heroku free hosting : <br>
+
+1. It may take some time to load.
+2. Sometime at first login it may show some error which will be solve just by logout and login again.
+
 ## Available Scripts
 
 In the project directory, you can run:
